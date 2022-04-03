@@ -18,6 +18,7 @@ end
 -- Packer plugin manager
 ensure("wbthomason", "packer.nvim")
 
+-- added a comment
 vim.cmd 'source ~/.config/nvim/vimscript_extra.vim'
 
 --vim.g.ale_completion_enabled = 1
