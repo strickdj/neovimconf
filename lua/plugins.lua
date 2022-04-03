@@ -13,7 +13,7 @@ return require('packer').startup(function()
   use 'easymotion/vim-easymotion'
   use 'liuchengxu/vim-better-default'
 
-  use 'dense-analysis/ale'
+--  use 'dense-analysis/ale'
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -64,6 +64,7 @@ return require('packer').startup(function()
 
   use 'editorconfig/editorconfig-vim'
 
+  use 'StanAngeloff/php.vim'
 --  use 'PeterRincker/vim-argumentative'
 
 --  use 'Olical/conjure'
@@ -71,8 +72,8 @@ return require('packer').startup(function()
 --  use 'clojure-vim/clojure.vim'
 --  use 'clojure-vim/vim-jack-in'
 --
---  use 'guns/vim-sexp'
---  use 'jiangmiao/auto-pairs'
+  use 'guns/vim-sexp'
+  use 'jiangmiao/auto-pairs'
 --  use 'lewis6991/impatient.nvim'
   use 'mbbill/undotree'
 

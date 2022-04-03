@@ -4,8 +4,8 @@ local fn = vim.fn
 local fmt = string.format
 
 -- Work out where our plugins will be stored.
-local pack_path = fn.stdpath("data") .. "/site/pack"
 
+local pack_path = fn.stdpath("data") .. "/site/pack"
 function ensure (user, repo)
   -- Ensures a given github.com/USER/REPO is cloned in the pack/packer/start directory.
   local install_path = fmt("%s/packer/start/%s", pack_path, repo, repo)
@@ -18,24 +18,51 @@ end
 -- Packer plugin manager
 ensure("wbthomason", "packer.nvim")
 
+vim.cmd 'source ~/.config/nvim/vimscript_extra.vim'
 
-vim.g.ale_completion_enabled = 1
+--vim.g.ale_completion_enabled = 1
 
 -- Require plugins
 require('plugins')
 
 
+local map = vim.api.nvim_set_keymap
+local mapopts = { noremap = true, silent = true }
+
 vim.opt.colorcolumn = '80'
 -- print(vim.inspect(vim.opt.colorcolumn))
 vim.opt.listchars = {eol = '↲', tab = '▸ ', trail = '·'}
 vim.opt.list = true
+
+map('n', '<Space>', '', {})
 vim.g.mapleader = ' '
 
 vim.g.material_style = 'darker'
 vim.cmd 'colorscheme material'
 
+vim.cmd 'source ~/.config/nvim/remaps.vim'
 
-vim.cmd 'source ~/.config/nvim/vimscript_extra.vim'
+-- Make Y behave like C D etc...
+map("n", "Y", "y$", mapopts)
+
+-- Keep Cursor centered
+map("n", "n", "nzzzv", mapopts)
+map("n", "N", "Nzzzv", mapopts)
+map("n", "J", "mzJ`z", mapopts)
+
+-- Undo breakpoints
+map("i", ",", ",<C-g>u", mapopts)
+map("i", ".", ".<C-g>u", mapopts)
+map("i", "!", "!<C-g>u", mapopts)
+map("i", "?", "?<C-g>u", mapopts)
+
+-- Moving Text
+map("v", "J", ":m '>+1<CR>gv=gv", mapopts)
+map("v", "K", ":m '<-2<CR>gv=gv", mapopts)
+map("i", "<C-j>", "<Esc>:m .+1<CR>==", mapopts)
+map("i", "<C-k>", "<Esc>:m .-2<CR>==", mapopts)
+map("n", "<leader>k", ":m .-2<CR>==", mapopts)
+map("n", "<leader>j", ":m .+1<CR>==", mapopts)
 
 require('material').setup({
   lualine_style = 'default' -- or ''stealth'
@@ -43,21 +70,21 @@ require('material').setup({
 require('lualine').setup()
 require('which-key').setup()
 
-vim.g.ale_linters = {
-  javascript = {'eslint', 'tslint'},
-  jsx = {'stylelint', 'eslint'},
-  clojure = {'clj-kondo', 'joker'},
-  go = {'golint'},
-  php = {'intelephense'},
-}
+-- vim.g.ale_linters = {
+--   javascript = {'eslint', 'tslint'},
+--   jsx = {'stylelint', 'eslint'},
+--   clojure = {'clj-kondo', 'joker'},
+--   go = {'golint'},
+--   php = {'intelephense'},
+-- }
 
-vim.g.ale_fixers = {
-   ['*'] = {'remove_trailing_lines', 'trim_whitespace'},
-   javascript = {'prettier'},
-   css = {'prettier'},
-}
-vim.g.ale_javascript_prettier_options = '--single-quote --trailing-comma all'
-vim.g.ale_fix_on_save = true
+-- vim.g.ale_fixers = {
+--    ['*'] = {'remove_trailing_lines', 'trim_whitespace'},
+--    javascript = {'prettier'},
+--    css = {'prettier'},
+-- }
+-- vim.g.ale_javascript_prettier_options = '--single-quote --trailing-comma all'
+-- vim.g.ale_fix_on_save = true
 
 
 -- Telescope
@@ -84,27 +111,13 @@ telescope.setup {
 -- telescope.load_extension('fzf')
 
 -- Telescope Mappings
-vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>fd", "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>ft", "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>",
-  {silent = true, noremap = true}
-)
+map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", mapopts)
+map("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", mapopts)
+map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", mapopts)
+map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", mapopts)
+map("n", "<leader>fr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>", mapopts)
+map("n", "<leader>fd", "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", mapopts)
+map("n", "<leader>ft", "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>", mapopts)
 
 
 require('nvim-treesitter.configs').setup({
@@ -120,24 +133,12 @@ require('nvim-treesitter.configs').setup({
 
 
 -- Trouble Remaps
-vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
-  {silent = true, noremap = true}
-)
+map("n", "<leader>xx", "<cmd>Trouble<cr>", mapopts)
+map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", mapopts)
+map("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", mapopts)
+map("n", "<leader>xl", "<cmd>Trouble loclist<cr>", mapopts)
+map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", mapopts)
+map("n", "gR", "<cmd>Trouble lsp_references<cr>", mapopts)
 
 -- LSP Server Configurations
 
@@ -261,7 +262,7 @@ local on_attach = function(client, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
+  local opts = mapopts
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
