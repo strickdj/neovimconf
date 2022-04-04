@@ -15,7 +15,3 @@ set wildignore+=**/.git/*
 
 let g:netrw_winsize = 25
 
-
-
-
-
