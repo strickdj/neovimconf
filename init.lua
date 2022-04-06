@@ -8,6 +8,7 @@ require "user.plugins"
 require "user.colorscheme"
 require "user.cmp"
 
+require "alpha"
 require "user.lsp"
 require "user.lint"
 require "user.telescope"
@@ -21,5 +22,4 @@ require "user.autocommands"
 -- require "nvim-tree"
 -- require "impatient"
 -- require "indentline"
--- require "alpha"
 --

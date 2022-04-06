@@ -47,7 +47,6 @@ keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
 keymap("n", "J", "mzJ`z", opts)
 
-
 -- Insert --
 -- Press jj fast to enter
 keymap("i", "jj", "<ESC>", opts)
@@ -57,7 +56,6 @@ keymap("i", ",", ",<C-g>u", opts)
 keymap("i", ".", ".<C-g>u", opts)
 keymap("i", "!", "!<C-g>u", opts)
 keymap("i", "?", "?<C-g>u", opts)
-
 
 -- Visual --
 -- Stay in indent mode
@@ -74,7 +72,6 @@ keymap("v", "p", '"_dP', opts)
 -- keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
 -- keymap("n", "<leader>k", ":m .-2<CR>==", opts)
 -- keymap("n", "<leader>j", ":m .+1<CR>==", opts)
-
 
 -- Visual Block --
 -- Move text up and down
@@ -108,4 +105,34 @@ keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", opts)
 keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", opts)
 keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", opts)
 
+-- -- " Fugative git integration
+-- nmap <leader>gj :diffget //3<CR>
+-- nmap <leader>gf :diffget //2<CR>
+-- nmap <leader>gs :G<CR>
+keymap("n", "<leader>gj", "<cmd>diffget //3<cr>", { silent = true })
+keymap("n", "<leader>gf", "<cmd>diffget //2<cr>", { silent = true })
+keymap("n", "<leader>gs", "<cmd>G<cr>", { silent = true })
 
+-- " remap : to ;
+-- nnoremap ; :
+-- vnoremap ; :
+keymap("n", ";", ":", opts)
+keymap("v", ";", ":", opts)
+
+-- " paste last thing yanked
+-- nmap ,p "0p
+-- nmap ,P "0P
+keymap("n", ",p", '"0p', { silent = true })
+keymap("n", ",P", '"0P', { silent = true })
+
+-- " vim-surround maps
+-- nmap <leader>` ysiw`
+keymap("n", "<leader>`", "ysiw`", { silent = true })
+
+-- " next greatest remap ever : asbjornHaland
+-- nnoremap <leader>y "+y
+-- vnoremap <leader>y "+y
+-- nmap <leader>Y "+Y
+keymap("n", "<leader>y", '"+y', opts)
+keymap("v", "<leader>y", '"+y', opts)
+keymap("n", "<leader>Y", '"+Y', { silent = true })

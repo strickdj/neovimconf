@@ -1,12 +1,11 @@
 vim.g.material_style = "darker"
-vim.cmd [[
+vim.cmd([[
 try
   colorscheme material
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
   set background=dark
 endtry
-]]
+]])
 
 require("material").setup()
-
