@@ -89,13 +89,40 @@ local mappings = {
     ["q"] = { "<cmd>q!<CR>", "Quit" },
     ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-    ["f"] = {
-        "<cmd>lua require('telescope.builtin').find_files()<cr>",
-        "Find files",
-    },
+    
     ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
     ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
+    f = {
+        f = {
+            "<cmd>lua require('telescope.builtin').find_files()<cr>",
+            "Find files",
+        },
+        g = {
+            "<cmd>lua require('telescope.builtin').live_grep()<cr>",
+            "Live grep",
+        },
+        b = {
+            "<cmd>lua require('telescope.builtin').buffers()<cr>",
+            "Find in buffers",
+        },
+        h = {
+            "<cmd>lua require('telescope.builtin').help_tags()<cr>",
+            "Find help tags",
+        },
+        r = {
+            "<cmd>lua require('telescope.builtin').lsp_references()<cr>",
+            "Find References",
+        },
+        d = {
+            "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>",
+            "Find definitions",
+        },
+        t = {
+            "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>",
+            "Find Type definitions",
+        },
+    },
     l = {
         name = "LSP",
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
