@@ -1,0 +1,11 @@
+{
+    "/** ...": {
+        "prefix": "/**",
+        "body": [
+            "/**",
+            " * $0",
+            " */"
+        ],
+        "description": "docblock comment"
+    }
+}

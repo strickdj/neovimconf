@@ -47,6 +47,8 @@ return packer.startup(function(use)
     use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
     use("goolord/alpha-nvim")
 
+    use("Olical/conjure")
+
     -- use "kyazdani42/nvim-tree.lua"
     -- use "akinsho/bufferline.nvim"
     -- use "moll/vim-bbye"
@@ -55,7 +57,6 @@ return packer.startup(function(use)
     -- use "ahmedkhalf/project.nvim"
     -- use "lewis6991/impatient.nvim"
     -- use "lukas-reineke/indent-blankline.nvim"
-    -- use "goolord/alpha-nvim"
     use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 
     -- Completion cmp plugins
@@ -91,9 +92,14 @@ return packer.startup(function(use)
     -- use "lewis6991/gitsigns.nvim"
     use("airblade/vim-gitgutter")
 
-    -- kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+    -- Theme
+    use({
+        "marko-cerovac/material.nvim",
+        disable = true,
+    })
+    use("gruvbox-community/gruvbox")
+    use("luisiacc/gruvbox-baby")
 
-    use("marko-cerovac/material.nvim")
     use({
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -133,10 +139,10 @@ return packer.startup(function(use)
 
     use("editorconfig/editorconfig-vim")
 
-    use("StanAngeloff/php.vim")
+    --     use("StanAngeloff/php.vim")
 
     use("guns/vim-sexp")
-    --  use 'lewis6991/impatient.nvim'
+    use("lewis6991/impatient.nvim")
     use("mbbill/undotree")
 
     use("radenling/vim-dispatch-neovim")
@@ -149,7 +155,7 @@ return packer.startup(function(use)
     use("tpope/vim-sexp-mappings-for-regular-people")
     use("tpope/vim-sleuth")
     use("tpope/vim-surround")
-    use("tpope/vim-unimpaired")
+    -- use("tpope/vim-unimpaired")
     use("tpope/vim-vinegar")
 
     -- Automatically set up your configuration after cloning packer.nvim
