@@ -47,16 +47,6 @@ return packer.startup(function(use)
     use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
     use("goolord/alpha-nvim")
 
-    use("Olical/conjure")
-
-    -- use "kyazdani42/nvim-tree.lua"
-    -- use "akinsho/bufferline.nvim"
-    -- use "moll/vim-bbye"
-    -- use "nvim-lualine/lualine.nvim"
-    -- use "akinsho/toggleterm.nvim"
-    -- use "ahmedkhalf/project.nvim"
-    -- use "lewis6991/impatient.nvim"
-    -- use "lukas-reineke/indent-blankline.nvim"
     use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 
     -- Completion cmp plugins
@@ -86,17 +76,11 @@ return packer.startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
     })
-    -- use "JoosepAlviste/nvim-ts-context-commentstring"
 
     -- Git
-    -- use "lewis6991/gitsigns.nvim"
     use("airblade/vim-gitgutter")
 
     -- Theme
-    use({
-        "marko-cerovac/material.nvim",
-        disable = true,
-    })
     use("gruvbox-community/gruvbox")
     use("luisiacc/gruvbox-baby")
 
@@ -139,9 +123,7 @@ return packer.startup(function(use)
 
     use("editorconfig/editorconfig-vim")
 
-    --     use("StanAngeloff/php.vim")
-
-    use("guns/vim-sexp")
+    -- use("guns/vim-sexp")
     use("lewis6991/impatient.nvim")
     use("mbbill/undotree")
 
@@ -152,11 +134,14 @@ return packer.startup(function(use)
     use("tpope/vim-eunuch")
     use("tpope/vim-fugitive")
     use("tpope/vim-repeat")
-    use("tpope/vim-sexp-mappings-for-regular-people")
+    -- use("tpope/vim-sexp-mappings-for-regular-people")
     use("tpope/vim-sleuth")
-    use("tpope/vim-surround")
+    -- use("tpope/vim-surround")
     -- use("tpope/vim-unimpaired")
     use("tpope/vim-vinegar")
+    -- use("rust-lang/rust.vim")
+
+    use("simrat39/rust-tools.nvim")
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
