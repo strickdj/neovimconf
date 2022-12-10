@@ -47,7 +47,7 @@ return packer.startup(function(use)
     use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
     use("goolord/alpha-nvim")
 
-    use("Olical/conjure")
+    -- use("Olical/conjure")
 
     -- use "kyazdani42/nvim-tree.lua"
     -- use "akinsho/bufferline.nvim"
@@ -93,10 +93,6 @@ return packer.startup(function(use)
     use("airblade/vim-gitgutter")
 
     -- Theme
-    use({
-        "marko-cerovac/material.nvim",
-        disable = true,
-    })
     use("gruvbox-community/gruvbox")
     use("luisiacc/gruvbox-baby")
 
@@ -141,20 +137,20 @@ return packer.startup(function(use)
 
     --     use("StanAngeloff/php.vim")
 
-    use("guns/vim-sexp")
+    -- use("guns/vim-sexp")
     use("lewis6991/impatient.nvim")
     use("mbbill/undotree")
 
     use("radenling/vim-dispatch-neovim")
-    use("tpope/vim-abolish")
+    -- use("tpope/vim-abolish")
     use("tpope/vim-commentary")
     use("tpope/vim-dispatch")
     use("tpope/vim-eunuch")
     use("tpope/vim-fugitive")
     use("tpope/vim-repeat")
-    use("tpope/vim-sexp-mappings-for-regular-people")
+    -- use("tpope/vim-sexp-mappings-for-regular-people")
     use("tpope/vim-sleuth")
-    use("tpope/vim-surround")
+    -- use("tpope/vim-surround")
     -- use("tpope/vim-unimpaired")
     use("tpope/vim-vinegar")
 
