@@ -5,7 +5,7 @@ lsp.preset("recommended")
 lsp.ensure_installed({
     "tsserver",
     "eslint",
-    "sumneko_lua",
+    "lua_ls",
     "rust_analyzer",
 })
 
@@ -46,10 +46,6 @@ local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 
-vim.diagnostic.config({
-    virtual_text = true,
-})
-
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
@@ -70,4 +66,10 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
+lsp.nvim_workspace()
+
 lsp.setup()
+
+vim.diagnostic.config({
+    virtual_text = true,
+})
