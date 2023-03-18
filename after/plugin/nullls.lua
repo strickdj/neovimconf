@@ -13,10 +13,13 @@ null_ls.setup({
     sources = {
         formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
         formatting.stylua,
-        formatting.phpcbf,
-        formatting.cljstyle,
+        -- formatting.phpcbf,
+        -- formatting.cljstyle,
+        formatting.rustfmt.with({
+            extra_args = { "--edition=2021" },
+        }),
         diagnostics.eslint,
-        diagnostics.phpcs,
+        -- diagnostics.phpcs,
     },
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then

@@ -45,31 +45,8 @@ return packer.startup(function(use)
     use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
     use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
     use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
+
     use("goolord/alpha-nvim")
-
-    use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
-
-    -- Completion cmp plugins
-    use("saadparwaiz1/cmp_luasnip") -- snippet completions
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-path")
-    use("hrsh7th/cmp-cmdline")
-    use("hrsh7th/nvim-cmp")
-
-    -- Snippets plugins
-    use("L3MON4D3/LuaSnip") --snippet engine
-    use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
-
-    -- LSP
-    use("neovim/nvim-lspconfig") -- enable LSP
-    use("williamboman/nvim-lsp-installer") -- simple to use language server installer
-    use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
-
-    use({
-        "jose-elias-alvarez/null-ls.nvim",
-        -- disable = true,
-    })
 
     -- Treesitter
     use({
@@ -77,24 +54,11 @@ return packer.startup(function(use)
         run = ":TSUpdate",
     })
 
-    -- Git
-    use("airblade/vim-gitgutter")
-
     -- Theme
     use("gruvbox-community/gruvbox")
     use("luisiacc/gruvbox-baby")
 
-    use({
-        "nvim-lualine/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    })
-
-    use("folke/which-key.nvim")
-    use("easymotion/vim-easymotion")
-    use("liuchengxu/vim-better-default")
-
-    use("mfussenegger/nvim-lint")
-
+    -- Fuzzy finder
     use({
         "junegunn/fzf",
         run = function()
@@ -102,14 +66,6 @@ return packer.startup(function(use)
         end,
     })
     use("junegunn/fzf.vim")
-
-    use({
-        "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
-        config = function()
-            require("trouble").setup({})
-        end,
-    })
 
     use({
         "nvim-telescope/telescope.nvim",
@@ -121,28 +77,49 @@ return packer.startup(function(use)
         run = "make",
     })
 
-    use("editorconfig/editorconfig-vim")
+    use({
+        "nvim-lualine/lualine.nvim",
+        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    })
 
-    -- use("guns/vim-sexp")
-    use("lewis6991/impatient.nvim")
+    use({
+        "VonHeikemen/lsp-zero.nvim",
+        requires = {
+            -- LSP Support
+            { "neovim/nvim-lspconfig" },
+            { "williamboman/mason.nvim" },
+            { "williamboman/mason-lspconfig.nvim" },
+
+            -- Autocompletion
+            { "hrsh7th/nvim-cmp" },
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-path" },
+            { "saadparwaiz1/cmp_luasnip" },
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "hrsh7th/cmp-nvim-lua" },
+
+            -- Snippets
+            { "L3MON4D3/LuaSnip" },
+            { "rafamadriz/friendly-snippets" },
+        },
+    })
+
     use("mbbill/undotree")
-
     use("radenling/vim-dispatch-neovim")
-    use("tpope/vim-abolish")
     use("tpope/vim-commentary")
     use("tpope/vim-dispatch")
     use("tpope/vim-eunuch")
     use("tpope/vim-fugitive")
     use("tpope/vim-repeat")
-    -- use("tpope/vim-sexp-mappings-for-regular-people")
     use("tpope/vim-sleuth")
-    -- use("tpope/vim-surround")
-    -- use("tpope/vim-unimpaired")
     use("tpope/vim-vinegar")
-    -- use("rust-lang/rust.vim")
 
-    use("simrat39/rust-tools.nvim")
+    use({
+        "jose-elias-alvarez/null-ls.nvim",
+        -- disable = true,
+    })
 
+    use("lewis6991/impatient.nvim")
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
